@@ -1,0 +1,35 @@
+{
+  "tasks": [
+    {
+      "name": "Install client dependencies",
+      "command": "cd client && npm install",
+      "dependsOn": []
+    },
+    {
+      "name": "Install server dependencies",
+      "command": "cd server && npm install",
+      "dependsOn": []
+    },
+    {
+      "name": "Build client",
+      "command": "cd client && npm run build",
+      "dependsOn": ["Install client dependencies"]
+    },
+    {
+      "name": "Start server",
+      "command": "cd server && npm start",
+      "dependsOn": ["Install server dependencies", "Build client"]
+    },
+    {
+      "name": "Dev client",
+      "command": "cd client && npm run dev",
+      "dependsOn": ["Install client dependencies"]
+    },
+    {
+      "name": "Dev server",
+      "command": "cd server && npm run dev",
+      "dependsOn": ["Install server dependencies"]
+    }
+  ],
+  "notes": "Always install dependencies before building or starting. The server requires the client to be built before serving static assets. For development, client and server can be run in parallel after installing dependencies."
+} 
